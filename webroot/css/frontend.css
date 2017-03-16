@@ -1,0 +1,251 @@
+/*
+ * Start Bootstrap - Heroic Features (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    background: #E5E5E5;
+}
+
+.hero-spacer {
+    margin-top: 50px;
+}
+
+.hero-feature {
+    margin-bottom: 30px;
+}
+
+footer {
+    margin: 50px 0;
+}
+.navbar{
+    background: #673AB7;
+}
+.navbar ul li a{
+    color: #FFF;
+}
+.navbar ul li a:hover{
+    background: #4B0082;
+}
+.btn-primary{
+    background: #673AB7;
+}
+.btn-primary:hover{
+    background: #4B0082;
+}
+.register-icon i{
+	font-size: 250px;
+    margin-top: 80px;
+}
+.form-register button{
+    margin-top: 30px;
+}
+label{
+    margin-top: 10px;
+}
+.thumbnail img{
+    min-height: 200px;
+    max-height: 200px;
+    margin-top: 20px;
+}
+.thumbnail{
+    background: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
+
+}
+.jumbotron{
+    background: #ffffff;
+    border-radius: 3px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
+}
+hr{
+    border-top: 1px solid #fff;
+}
+.thumbnail-type{
+    background: #4B0082;
+    overflow: hidden
+}
+.thumbnail-type p{
+    text-transform: uppercase; 
+    font-size: 20px;
+    color: #fff;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+.encontrado{
+    background:	#FFD700;
+}
+.perdido{
+    background: #FF4500;
+}
+.paginator{
+    float: right;
+}
+.thumbnail-item img{
+    margin-right: auto;
+    margin-left: auto;
+    min-height: 200px;
+    max-height: 200px;
+    margin-top: 20px;
+}
+.item-name h2{
+    text-align: center;
+    font-weight: bold;
+}
+.item-page-title h2{
+    text-align: center;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-bottom: 30px
+}
+.item-descri p{
+    font-size: 20px;
+    line-height: 22px;
+}
+#myMap {
+    height: 350px;
+    width: 100%;
+	margin-bottom: 20px;
+}
+.page-bottom{
+    margin-bottom: 30px;
+}
+.comment-form button{
+    margin-top: 20px;
+}
+.comentario{
+    background: #C0C0C0;
+    margin-top: 20px;
+    border-radius: 20px;
+}
+.comentarios-wrap button{
+    float: right;
+    clear: both
+}
+.comentario p#icon{
+    font-size: 80px;
+    text-align: center;
+    margin-bottom: 0px;
+}
+.comentario p#comment-name{
+    font-size: 20px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+span#comment-date{
+font-size: 14px;
+}
+.comentario-text{
+    margin-bottom: 15px;
+}
+#custom-search-input{
+    padding: 3px;
+    border: solid 1px #E4E4E4;
+    border-radius: 6px;
+    background-color: #fff;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+#custom-search-input input{
+    border: 0;
+    box-shadow: none;
+}
+
+#custom-search-input button{
+    margin: 2px 0 0 0;
+    background: none;
+    box-shadow: none;
+    border: 0;
+    color: #666666;
+    padding: 0 8px 0 10px;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input button:hover{
+    border: 0;
+    box-shadow: none;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input .glyphicon-search{
+    font-size: 23px;
+}
+.alert-success{
+    background: #4B0082;
+    color: #fff;
+    width: 40%;
+    margin: 0 auto;
+}
+.close{
+    color: #fff;
+    opacity: 1;
+}
+.alert-danger{
+    background: #8B0000;
+    color: #fff;
+    width: 40%;
+    margin: 0 auto;
+}
+.infoBox { 
+    background-color: #FFF; 
+    width: 350px; 
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 14px; 
+    border: 2px solid #3fa7d8; 
+    border-radius: 3px; 
+    margin-top: 10px 
+}
+.infoBox p { 
+    padding: 0 15px 
+}
+.infoBox:before { 
+    border-left: 10px solid transparent; 
+    border-right: 10px solid transparent; 
+    border-bottom: 10px solid #3fa7d8; 
+    top: -10px; content: ""; 
+    height: 0; 
+    position: absolute; 
+    width: 0; 
+    left: 138px 
+}
+.map-content{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#map-name{
+    font-size: 16px;
+    margin-bottom: 0px;
+    font-weight: bold;
+}
+#map-title{
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+.profile-photo img{
+    max-width: 100%;
+    height: auto;
+    display:block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 28px;
+}
+#publicado a{
+    text-decoration: none;
+    color: #673AB7;
+}
+.navbar-toggle {
+    background-color: #fff;
+}
+.navbar-toggle .icon-bar {
+    background: #673AB7;
+}
+#instructions{
+    font-size: 14px;
+}
