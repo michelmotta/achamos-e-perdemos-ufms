@@ -234,16 +234,21 @@ class ObjectsController extends AppController
     /**
      * generateDataMaps method
      * This method set ajax layout, it makes find in Objects database, and set data to view
-     * @return none
+     * @return json response
      */
     public function generateDataMaps()
     {   
-        $this->viewBuilder()->setLayout('ajax');
-        
+        $this->autoRender = false;
+
         $data = $this->Objects->find()
-            ->select(['id', 'name', 'type', 'latitude', 'longitude'])
+            ->select(['id', 'name', 'type', 'date', 'latitude', 'longitude'])
             ->order(['Objects.id' => 'DESC']);
-    
-        $this->set(compact('data'));   
+
+        $this->response->type('json');  
+
+        $json = json_encode($data);
+        
+        $this->response->body($json);
+
     }
 }

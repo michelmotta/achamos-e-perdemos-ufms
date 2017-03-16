@@ -15717,3 +15717,9 @@ label {
 .main-header>.navbar {
     margin-left: 0px !important;
 }
+.main-header .navbar {
+    background-color: #673AB7 !important;
+}
+.main-header .logo{
+    display: none;
+}

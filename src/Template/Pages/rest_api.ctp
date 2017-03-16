@@ -11,7 +11,7 @@
 	</div>	
 	<div class="row">
 		<div class="col-md-12">
-			<h3>URL para requisições: <span class="label label-default">http://localhost/progweb/datamaps</span></h3>
+			<h3>URL para requisições: <span class="label label-default">http://achamoseperdemos.com/datamaps</span></h3>
 			<h3>Formato dos dados retornados via Json</h3>
 				<table class="table">
 					<thead>
@@ -57,10 +57,10 @@
 			<pre class="brush: js;">
 				$.ajax({
 					type:"POST",
-					url:"http://localhost/progweb/datamaps",
+					url:"http://achamoseperdemos.com/datamaps",
 					success: function(data){
 						var table = "&lt;table class='table'&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Nome do Objeto&lt;/th&gt;&lt;th&gt;Tipo do Objeto&lt;/th&gt;&lt;th&gt;Latitude&lt;/th&gt;&lt;th&gt;Longitude&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;";
-						$.each($.parseJSON(data), function(index, ponto) {
+						$.each(data, function(index, ponto) {
 							table += "&lt;tr&gt;&lt;td&gt;" + ponto.name + "&lt;/td&gt;&lt;td&gt;" + ponto.type + "&lt;/td&gt;&lt;td&gt;" + ponto.latitude + "&lt;/td&gt;&lt;td&gt;" + ponto.longitude + "&lt;/td&gt;&lt;/tr&gt;";
 						});
 						table += "&lt;/table";
@@ -95,7 +95,7 @@
 
 				curl_setopt_array($curl, array(
 					CURLOPT_RETURNTRANSFER => 1,
-					CURLOPT_URL => 'http://localhost/progweb/datamaps',
+					CURLOPT_URL => 'http://achamoseperdemos.com/datamaps',
 					CURLOPT_POST => 1,
 				));
 
@@ -124,7 +124,7 @@
 				$curl = curl_init();
 				curl_setopt_array($curl, array(
 					CURLOPT_RETURNTRANSFER => 1,
-					CURLOPT_URL => 'http://localhost/progweb/datamaps',
+					CURLOPT_URL => 'http://achamoseperdemos.com/datamaps',
 					CURLOPT_POST => 1,
 				));
 				$response = curl_exec($curl);
@@ -153,11 +153,11 @@
 <script>
 	$.ajax({
 		type:"POST",
-		url:"http://localhost/progweb/datamaps",
+		url:"http://achamoseperdemos.com/datamaps",
 		success: function(data){
 			var table = "<table class='table'><thead><tr><th>Nome do Objeto</th><th>Tipo do Objeto</th><th>Latitude</th><th>Longitude</th></tr></thead>";
 			var count = 0;
-			$.each($.parseJSON(data), function(index, ponto) {
+			$.each(data, function(index, ponto) {
 				count++;
 				table += "<tr><td>" + ponto.name + "</td><td>" + ponto.type + "</td><td>" + ponto.latitude + "</td><td>" + ponto.longitude + "</td></tr>";
 				if(count === 5){

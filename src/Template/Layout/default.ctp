@@ -13,7 +13,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 use Cake\Routing\Router;
-$cakeDescription = 'CakePHP: the rapid development php framework';
+$cakeDescription = 'Achamos e Perdemos UFMS';
 ?>
 <!DOCTYPE html>
 <head>

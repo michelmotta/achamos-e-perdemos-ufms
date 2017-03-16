@@ -6,6 +6,9 @@ use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 use Search\Manager;
+use Cake\Event\Event;
+use ArrayObject;
+use Cake\I18n\Time;
 
 /**
  * Objects Model
@@ -138,5 +141,12 @@ class ObjectsTable extends Table
         $rules->add($rules->existsIn(['user_id'], 'Users'));
 
         return $rules;
+    }
+
+    public function beforeMarshal(Event $event, ArrayObject $data, ArrayObject $options)
+    {
+       if (isset($data['date'])) {
+           $data['date'] = implode("-",array_reverse(explode("/", $data['date'])));
+       }
     }
 }
