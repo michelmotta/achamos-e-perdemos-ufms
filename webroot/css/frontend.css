@@ -249,3 +249,6 @@ font-size: 14px;
 #instructions{
     font-size: 14px;
 }
+.form-control:focus{
+    border: 2px solid #673AB7;
+}
