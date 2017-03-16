@@ -108,7 +108,7 @@
 				$table = "&lt;table class='table'&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Nome do Objeto&lt;/th&gt;&lt;th&gt;Tipo do Objeto&lt;/th&gt;&lt;th&gt;Latitude&lt;/th&gt;&lt;th&gt;Longitude&lt;/th&gt;&lt;/tr&gt;&lt;thead&gt;";
 				if (!empty($data)):
 					foreach ($data as $object):
-						$table .= "&lt;tr&gt;&lt;td&gt;" . $object->name . "&lt;/td&gt;&lt;td&gt;" . $object->type . "&lt;/td&gt;&lt;td&gt;" . $object->latitude . "&lt;/td&gt;&lt;td&gt;" . $object->latitude . "&lt;/td&gt;&lt;/tr&gt;";
+						$table .= "&lt;tr&gt;&lt;td&gt;" . $object->name . "&lt;/td&gt;&lt;td&gt;" . $object->type . "&lt;/td&gt;&lt;td&gt;" . date("d/m/Y", strtotime($object->date)) . "&lt;/td&gt;&lt;td&gt;" . $object->latitude . "&lt;/td&gt;&lt;td&gt;" . $object->latitude . "&lt;/td&gt;&lt;/tr&gt;";
 					endforeach;
 				$table .= "&lt;/table&gt;";	
 				endif;
@@ -131,12 +131,12 @@
 				curl_close($curl);
 
 				$data = json_decode($response);
-				$table = "<table class='table'><thead><tr><th>Nome do Objeto</th><th>Tipo do Objeto</th><th>Latitude</th><th>Longitude</th></tr><thead>";
+				$table = "<table class='table'><thead><tr><th>Nome do Objeto</th><th>Tipo do Objeto</th><th>Data do ocorrido</th><th>Latitude</th><th>Longitude</th></tr><thead>";
 				if (!empty($data)):
 					$count = 0;
 					foreach ($data as $object):
 						$count ++;
-						$table .= "<tr><td>" . $object->name . "</td><td>" . $object->type . "</td><td>" . $object->latitude . "</td><td>" . $object->latitude . "</td></tr>";
+						$table .= "<tr><td>" . $object->name . "</td><td>" . $object->type . "</td><td>" . date("d/m/Y", strtotime($object->date)) . "</td><td>" .$object->latitude . "</td><td>" . $object->latitude . "</td></tr>";
 						if($count === 5){
 							break;
 						}
