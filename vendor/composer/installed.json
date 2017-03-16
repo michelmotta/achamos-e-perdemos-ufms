@@ -1246,115 +1246,6 @@
         ]
     },
     {
-        "name": "cakephp/debug_kit",
-        "version": "3.9.2",
-        "version_normalized": "3.9.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/cakephp/debug_kit.git",
-            "reference": "a4d4250bc4b1724f6a13f58caaaed2a1f8684c33"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/a4d4250bc4b1724f6a13f58caaaed2a1f8684c33",
-            "reference": "a4d4250bc4b1724f6a13f58caaaed2a1f8684c33",
-            "shasum": ""
-        },
-        "require": {
-            "cakephp/cakephp": ">=3.1.0 <4.0",
-            "cakephp/plugin-installer": "*",
-            "composer/composer": "^1.3",
-            "jdorn/sql-formatter": "~1.2"
-        },
-        "require-dev": {
-            "cakephp/cakephp-codesniffer": "~2.1",
-            "phpunit/phpunit": "<6.0"
-        },
-        "suggest": {
-            "ext-sqlite": "DebugKit needs to store panel data in a database. SQLite is simple and easy to use."
-        },
-        "time": "2017-03-07 02:39:42",
-        "type": "cakephp-plugin",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "DebugKit\\": "src",
-                "DebugKit\\Test\\Fixture\\": "tests\\Fixture"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Mark Story",
-                "homepage": "http://mark-story.com",
-                "role": "Author"
-            },
-            {
-                "name": "CakePHP Community",
-                "homepage": "https://github.com/cakephp/debug_kit/graphs/contributors"
-            }
-        ],
-        "description": "CakePHP Debug Kit",
-        "homepage": "https://github.com/cakephp/debug_kit",
-        "keywords": [
-            "cakephp",
-            "debug",
-            "kit"
-        ]
-    },
-    {
-        "name": "cakephp/bake",
-        "version": "1.3.1",
-        "version_normalized": "1.3.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/cakephp/bake.git",
-            "reference": "dd87f9f8d688aba4da4f185fc7de9979edbe60bb"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/cakephp/bake/zipball/dd87f9f8d688aba4da4f185fc7de9979edbe60bb",
-            "reference": "dd87f9f8d688aba4da4f185fc7de9979edbe60bb",
-            "shasum": ""
-        },
-        "require": {
-            "cakephp/cakephp": ">=3.4.0 <4.0.0",
-            "cakephp/plugin-installer": "*",
-            "php": ">=5.6.0"
-        },
-        "require-dev": {
-            "cakephp/cakephp-codesniffer": "^2.1",
-            "phpunit/phpunit": "~5.7 | ~6.0"
-        },
-        "time": "2017-03-04 02:34:32",
-        "type": "cakephp-plugin",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Bake\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "CakePHP Community",
-                "homepage": "https://github.com/cakephp/bake/graphs/contributors"
-            }
-        ],
-        "description": "Bake plugin for CakePHP 3.0",
-        "homepage": "https://github.com/cakephp/bake",
-        "keywords": [
-            "bake",
-            "cakephp"
-        ]
-    },
-    {
         "name": "cakephp/cakephp",
         "version": "3.4.3",
         "version_normalized": "3.4.3.0",
@@ -2021,6 +1912,115 @@
             "cakephp",
             "cakephp3",
             "search"
+        ]
+    },
+    {
+        "name": "cakephp/debug_kit",
+        "version": "3.9.3",
+        "version_normalized": "3.9.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/cakephp/debug_kit.git",
+            "reference": "20562b25e58da1efae7050c6c995ffe11726ad9a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/20562b25e58da1efae7050c6c995ffe11726ad9a",
+            "reference": "20562b25e58da1efae7050c6c995ffe11726ad9a",
+            "shasum": ""
+        },
+        "require": {
+            "cakephp/cakephp": ">=3.1.0 <4.0",
+            "cakephp/plugin-installer": "*",
+            "composer/composer": "^1.3",
+            "jdorn/sql-formatter": "~1.2"
+        },
+        "require-dev": {
+            "cakephp/cakephp-codesniffer": "~2.1",
+            "phpunit/phpunit": "<6.0"
+        },
+        "suggest": {
+            "ext-sqlite": "DebugKit needs to store panel data in a database. SQLite is simple and easy to use."
+        },
+        "time": "2017-03-16 01:28:35",
+        "type": "cakephp-plugin",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "DebugKit\\": "src",
+                "DebugKit\\Test\\Fixture\\": "tests\\Fixture"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Mark Story",
+                "homepage": "http://mark-story.com",
+                "role": "Author"
+            },
+            {
+                "name": "CakePHP Community",
+                "homepage": "https://github.com/cakephp/debug_kit/graphs/contributors"
+            }
+        ],
+        "description": "CakePHP Debug Kit",
+        "homepage": "https://github.com/cakephp/debug_kit",
+        "keywords": [
+            "cakephp",
+            "debug",
+            "kit"
+        ]
+    },
+    {
+        "name": "cakephp/bake",
+        "version": "1.3.3",
+        "version_normalized": "1.3.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/cakephp/bake.git",
+            "reference": "bfa50d866b41cdf2ed43a360a213c63b0cd955e7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/cakephp/bake/zipball/bfa50d866b41cdf2ed43a360a213c63b0cd955e7",
+            "reference": "bfa50d866b41cdf2ed43a360a213c63b0cd955e7",
+            "shasum": ""
+        },
+        "require": {
+            "cakephp/cakephp": ">=3.4.0 <4.0.0",
+            "cakephp/plugin-installer": "*",
+            "php": ">=5.6.0"
+        },
+        "require-dev": {
+            "cakephp/cakephp-codesniffer": "^2.1",
+            "phpunit/phpunit": "~5.7 | ~6.0"
+        },
+        "time": "2017-03-15 20:24:03",
+        "type": "cakephp-plugin",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Bake\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "CakePHP Community",
+                "homepage": "https://github.com/cakephp/bake/graphs/contributors"
+            }
+        ],
+        "description": "Bake plugin for CakePHP 3.0",
+        "homepage": "https://github.com/cakephp/bake",
+        "keywords": [
+            "bake",
+            "cakephp"
         ]
     }
 ]
