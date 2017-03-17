@@ -13,6 +13,10 @@
                     <td><?= $upload->has('object') ? $this->Html->link($upload->object->name, ['controller' => 'Objects', 'action' => 'view', $upload->object->id]) : '' ?></td>
                 </tr>
                 <tr>
+                    <th scope="row"><?= __('Usuário') ?></th>
+                    <td><?= $upload->has('user') ? $this->Html->link($upload->user->name, ['controller' => 'Users', 'action' => 'view', $upload->user->id]) : '' ?></td>
+                </tr>
+                <tr>
                     <th scope="row"><?= __('Arquivo') ?></th>
                     <td><?= h($upload->file) ?></td>
                 </tr>

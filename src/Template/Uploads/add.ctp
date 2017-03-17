@@ -10,10 +10,13 @@
             <fieldset>
                 <legend><?= __('Adicionar Upload') ?></legend>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <?php echo $this->Form->control('object_id', ['options' => $objects, 'label' => 'Objeto', 'class' => 'form-control']); ?>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
+                        <?php echo $this->Form->control('user_id', ['options' => $users, 'label' => 'Usuário', 'class' => 'form-control']); ?>
+                    </div>
+                    <div class="col-md-4">
                         <?php echo $this->Form->control('file', ['type' =>'file', 'label' => 'Arquivo']); ?>
                         <?php echo $this->Form->control('file_path', ['type' => 'hidden']); ?>
                     </div>

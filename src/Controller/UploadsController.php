@@ -19,7 +19,7 @@ class UploadsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Objects']
+            'contain' => ['Objects', 'Users']
         ];
         $uploads = $this->paginate($this->Uploads);
 
@@ -62,7 +62,8 @@ class UploadsController extends AppController
             $this->Flash->error(__('The upload could not be saved. Please, try again.'));
         }
         $objects = $this->Uploads->Objects->find('list', ['limit' => 200]);
-        $this->set(compact('upload', 'objects'));
+        $users = $this->Uploads->Users->find('list', ['limit' => 200]);
+        $this->set(compact('upload', 'objects', 'users'));
         $this->set('_serialize', ['upload']);
     }
 
@@ -88,7 +89,8 @@ class UploadsController extends AppController
             $this->Flash->error(__('O upload não pôde ser deletado. Por favor, tente novamente.'));
         }
         $objects = $this->Uploads->Objects->find('list', ['limit' => 200]);
-        $this->set(compact('upload', 'objects'));
+        $users = $this->Uploads->Users->find('list', ['limit' => 200]);
+        $this->set(compact('upload', 'objects', 'users'));
         $this->set('_serialize', ['upload']);
     }
 

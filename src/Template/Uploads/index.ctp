@@ -13,6 +13,7 @@
                     <tr>
                         <th scope="col"><?= $this->Paginator->sort('id', __('Id')) ?></th>
                         <th scope="col"><?= $this->Paginator->sort('object_id', __('Nome do Objeto')) ?></th>
+                        <th scope="col"><?= $this->Paginator->sort('user_id', __('Usuário')) ?></th>
                         <th scope="col"><?= $this->Paginator->sort('file', __('Nome do Arquivo')) ?></th>
                         <th scope="col"><?= $this->Paginator->sort('created', __('Criado')) ?></th>
                         <th scope="col"><?= $this->Paginator->sort('modified', __('Modificado')) ?></th>
@@ -24,6 +25,7 @@
                     <tr>
                         <td><?= $this->Number->format($upload->id) ?></td>
                         <td><?= $upload->has('object') ? $this->Html->link($upload->object->name, ['controller' => 'Objects', 'action' => 'view', $upload->object->id]) : '' ?></td>
+                        <td><?= $upload->has('user') ? $this->Html->link($upload->user->name, ['controller' => 'users', 'action' => 'view', $upload->user->id]) : '' ?></td>
                         <td><?= h($upload->file) ?></td>
                         <td><?= h($upload->created) ?></td>
                         <td><?= h($upload->modified) ?></td>

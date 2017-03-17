@@ -44,6 +44,11 @@ class UploadsTable extends Table
             'foreignKey' => 'object_id',
             'joinType' => 'INNER'
         ]);
+
+        $this->belongsTo('Users', [
+            'foreignKey' => 'user_id',
+            'joinType' => 'INNER'
+        ]);
     }
 
     /**
