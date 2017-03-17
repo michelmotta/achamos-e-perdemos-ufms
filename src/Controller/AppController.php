@@ -49,9 +49,10 @@ class AppController extends Controller
                 'action' => 'index'
             ],
             'logoutRedirect' => [
-                'controller' => 'Users',
-                'action' => 'login',
-            ]
+                'controller' => 'Pages',
+                'action' => 'dashboard',
+            ],
+            'authError' => 'Você precisa de permissão cooreta para fazer isso'
         ]);
 
         /*
