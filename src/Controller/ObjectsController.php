@@ -15,6 +15,14 @@ use Cake\Routing\Router;
 class ObjectsController extends AppController
 {
 
+    private $userId;
+    private $userRole;
+
+    /**
+     * beforeFilter callback method
+     * This callback method allow views to see visualized without authentication
+     * @return \Cake\Network\Response|null
+     */
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
@@ -32,6 +40,8 @@ class ObjectsController extends AppController
             // the PRG component work only for specified methods.
             'actions' => ['listAllUnsolvedObjects', 'listAllSolvedObjects']
         ]);
+        $this->userId = $this->Auth->user('id');
+        $this->userRole = $this->Auth->user('role');
     }
 
     /**
@@ -41,14 +51,23 @@ class ObjectsController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Users']
-        ];
-        $objects = $this->paginate($this->Objects);
-
-        $this->set(compact('objects'));
-        $this->set('_serialize', ['objects']);
         
+        if($this->userRole == 'admin'){
+             $this->paginate = [
+                'contain' => ['Users']
+            ];
+            $objects = $this->paginate($this->Objects);
+
+            $this->set(compact('objects'));
+            $this->set('_serialize', ['objects']);
+        }else{
+            $query = $this->Objects
+                ->find()
+                ->contain(['Users'])
+                ->where(['user_id' => $this->userId]);
+
+            $this->set('objects', $this->paginate($query));
+        }
     }
 
     /**

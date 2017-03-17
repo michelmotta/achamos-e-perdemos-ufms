@@ -11,6 +11,16 @@ use App\Controller\AppController;
 class CommentsController extends AppController
 {
 
+    private $userId;
+    private $userRole;
+
+    public function initialize()
+    {
+        parent::initialize();
+
+        $this->userId = $this->Auth->user('id');
+        $this->userRole = $this->Auth->user('role');
+    }
     /**
      * Index method
      *
@@ -18,13 +28,24 @@ class CommentsController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Objects']
-        ];
-        $comments = $this->paginate($this->Comments);
 
-        $this->set(compact('comments'));
-        $this->set('_serialize', ['comments']);
+        if($this->userRole == 'admin'){
+            $this->paginate = [
+                'contain' => ['Objects']
+            ];
+            $comments = $this->paginate($this->Comments);
+
+            $this->set(compact('comments'));
+            $this->set('_serialize', ['comments']);
+
+        }else{
+            $query = $this->Comments
+                ->find()
+                ->contain(['Objects'])
+                ->where(['Objects.user_id' => $this->userId]);
+
+            $this->set('comments', $this->paginate($query));
+        }
     }
 
     /**

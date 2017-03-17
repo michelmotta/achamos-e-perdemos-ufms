@@ -36,7 +36,13 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <?php echo $this->Form->control('role', ['options' => ['user' => 'Usuário', 'admin' => 'Admin'], 'label' => 'Permissão', 'class' => 'form-control']); ?>
+                            <?php $userRole = $this->request->session()->read('Auth.User.role'); ?>
+                            <?php if($userRole == 'admin') : ?>
+                                <?php echo $this->Form->control('role', ['options' => ['user' => 'Usuário', 'admin' => 'Admin'], 'label' => 'Permissão', 'class' => 'form-control']); ?>
+                            <?php endif; ?>
+                            <?php if($userRole == 'user') : ?>
+                                <?php echo $this->Form->control('role', ['type' => 'hidden', 'value' => 'user']); ?>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="row">

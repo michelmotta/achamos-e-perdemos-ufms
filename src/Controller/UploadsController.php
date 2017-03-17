@@ -11,6 +11,17 @@ use App\Controller\AppController;
 class UploadsController extends AppController
 {
 
+    private $userId;
+    private $userRole;
+
+    public function initialize()
+    {
+        parent::initialize();
+        
+        $this->userId = $this->Auth->user('id');
+        $this->userRole = $this->Auth->user('role');
+    }
+
     /**
      * Index method
      *
@@ -18,13 +29,23 @@ class UploadsController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Objects', 'Users']
-        ];
-        $uploads = $this->paginate($this->Uploads);
+        
+        if($this->userRole == 'admin'){
+            $this->paginate = [
+                'contain' => ['Objects', 'Users']
+            ];
+            $uploads = $this->paginate($this->Uploads);
 
-        $this->set(compact('uploads'));
-        $this->set('_serialize', ['uploads']);
+            $this->set(compact('uploads'));
+            $this->set('_serialize', ['uploads']);
+        }else{
+            $query = $this->Uploads
+                ->find()
+                ->contain(['Objects', 'Users'])
+                ->where(['Users.id' => $this->userId]);
+
+            $this->set('uploads', $this->paginate($query));
+        }
     }
 
     /**

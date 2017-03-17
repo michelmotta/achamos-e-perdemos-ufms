@@ -5,6 +5,10 @@
 ?>
 <div class="card">
     <div class="card-body">
+            <?php $userRole = $this->request->session()->read('Auth.User.role'); ?>
+            <?php if($userRole == 'admin') : ?>
+                <p><?= $this->Html->link(__('Novo Usuário'), ['action' => 'add'], ['class' => 'btn btn-primary pull-right']) ?></p>
+            <?php endif; ?>
         <div class="users index large-9 medium-8 columns content">
             <h3><?= __('Usuários') ?></h3>
             <table class="table">
