@@ -61,12 +61,25 @@ class UsersController extends AppController
     public function index()
     {
         $userId = $this->Auth->user('id');
+        $userRole = $this->Auth->user('role');
 
-        $query = $this->Users
+        if($userRole == 'admin'){
+            $this->paginate = [
+                'contain' => []
+            ];
+            $users = $this->paginate($this->Users);
+
+            $this->set(compact('users'));
+            $this->set('_serialize', ['users']);
+        }else{
+            $query = $this->Users
             ->find()
             ->where(['Users.id' => $userId]);
 
-        $this->set('users', $this->paginate($query));
+            $this->set('users', $this->paginate($query));
+        }
+
+        
     }
 
     /**
