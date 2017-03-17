@@ -92,6 +92,7 @@ class ObjectsController extends AppController
                         $dir = $url . 'webroot' . DS . 'img' . DS . 'uploads' . DS . $uploadedFile;
 
                         $upload->object_id = $objectId;
+                        $upload->user_id = $this->Auth->user('id');
                         $upload->file = $uploadedFile;
                         $upload->file_path = $dir;
 
@@ -139,6 +140,7 @@ class ObjectsController extends AppController
                         $dir = $url . 'webroot' . DS . 'img' . DS . 'uploads' . DS . $uploadedFile;
 
                         $upload->object_id = $objectId;
+                        $upload->user_id = $this->Auth->user('id');
                         $upload->file = $uploadedFile;
                         $upload->file_path = $dir;
 
