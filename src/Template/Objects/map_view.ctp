@@ -37,7 +37,7 @@ function carregarPontos() {
 		type:"POST",
 		url:"<?php echo Router::url(array('controller' => 'Objects', 'action' => 'generateDataMaps'));?>",
 		success: function(data){
-			$.each($.parseJSON(data), function(index, ponto) {
+			$.each(data, function(index, ponto) {
 				var marker = new google.maps.Marker({
 					position: new google.maps.LatLng(ponto.latitude, ponto.longitude),
 					title: "Meu ponto personalizado! :-D",
