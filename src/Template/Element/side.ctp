@@ -9,10 +9,14 @@
     <li class="<?= $class ?>">
       <?= $this->Html->link(__('<i class="fa fa-map-marker"></i><span>Objetos</span>') ,['controller' => 'Objects', 'action' => 'index'], ['escape' => false]) ?>
     </li>
-    <?php if($this->request->params['controller'] == 'Categories') $class = 'active'; else $class = ''; ?>
-    <li class="<?= $class ?>">
-      <?= $this->Html->link(__('<i class="fa fa-tags"></i><span>Categorias</span>') ,['controller' => 'Categories', 'action' => 'index'], ['escape' => false]) ?>
-    </li>
+
+    <?php if($this->request->session()->read('Auth.User.role') == 'admin'){ ?>
+      <?php if($this->request->params['controller'] == 'Categories') $class = 'active'; else $class = ''; ?>
+      <li class="<?= $class ?>">
+        <?= $this->Html->link(__('<i class="fa fa-tags"></i><span>Categorias</span>') ,['controller' => 'Categories', 'action' => 'index'], ['escape' => false]) ?>
+      </li>
+    <?php } ?>
+
     <?php if($this->request->params['controller'] == 'Uploads') $class = 'active'; else $class = ''; ?>
     <li class="<?= $class ?>">
       <?= $this->Html->link(__('<i class="fa fa-cloud-upload"></i><span>Uploads</span>') ,['controller' => 'Uploads', 'action' => 'index'], ['escape' => false]) ?>

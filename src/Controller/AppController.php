@@ -45,12 +45,12 @@ class AppController extends Controller
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [
             'loginRedirect' => [
-                'controller' => 'Objects',
-                'action' => 'index'
+                'controller' => 'Pages',
+                'action' => 'dashboard'
             ],
             'logoutRedirect' => [
-                'controller' => 'Pages',
-                'action' => 'dashboard',
+                'controller' => 'Users',
+                'action' => 'login',
             ],
             'authError' => 'Você precisa de permissão cooreta para fazer isso'
         ]);
