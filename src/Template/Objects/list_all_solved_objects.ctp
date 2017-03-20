@@ -41,7 +41,7 @@
 			?>
 			<div class="caption">
 				<h3><?= $object->name; ?></h3>
-				<p><?= $object->description; ?></p>
+				<p><?= $this->TextLimit->limitText($object->description, 150); ?></p>
 				<p><?= $this->Html->link(__('Ver Detalhes'), ['controller' => 'Objects', 'action' => 'singleItem', $object->id], ['class' => 'btn btn-primary']) ?></p>
 				<p id="publicado"><?= $this->Html->link(__('Publicado por: ' . $object->user->name), ['controller' => 'Users', 'action' => 'viewProfile', $object->user->id]) ?></p>
 			</div>

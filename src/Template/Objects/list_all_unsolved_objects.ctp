@@ -13,12 +13,12 @@
 			</div>
 		</div>
 		<?php echo $this->Form->end();?>
-	</div>	
-	<div class="col-md-2"></div>	
+	</div>
+	<div class="col-md-2"></div>
 </div>
 <!-- Page Features -->
-<div class="row text-center"> 
-	<?php 
+<div class="row text-center">
+	<?php
 		$post_counter = 0;
 		$per_row = 3;
 
@@ -32,31 +32,31 @@
 		}else{
 			$class = "perdido";
 			$border = "#FF4500;";
-		}		
-	?>         
+		}
+	?>
 	<div class="col-md-4 hero-feature">
 		<div class="thumbnail" style="border: 3px solid <?php echo $border; ?>">
 			<div class="thumbnail-type <?php echo $class; ?>">
 					<p><?= $object->type; ?></p>
 			</div>
-			<?php 
+			<?php
 			if (!empty($object->uploads)):
 				foreach ($object->uploads as $uploads):
 					echo $this->Html->image('uploads/'. $uploads->file, ['alt' => '']);
 					break;
 				endforeach;
-			endif; 
+			endif;
 			?>
 			<div class="caption">
 				<h3><?= $object->name; ?></h3>
-				<p><?= $object->description; ?></p>
+				<p><?= $this->TextLimit->limitText($object->description, 150); ?></p>
 				<p><?= $this->Html->link(__('Ver Detalhes'), ['controller' => 'Objects', 'action' => 'singleItem', $object->id], ['class' => 'btn btn-primary']) ?></p>
 				<p id="publicado"><?= $this->Html->link(__('Publicado por: ' . $object->user->name), ['controller' => 'Users', 'action' => 'viewProfile', $object->user->id]) ?></p>
 			</div>
 		</div>
 	</div>
 	<?php $post_counter++; } ?>
-</div>  
+</div>
 <!-- /.row -->
 <div class="paginator">
 	<ul class="pagination">
