@@ -61,13 +61,13 @@ class PagesController extends AppController
         }
 
         $this->loadModel('Objects');
-        $Objects = $this->Objects->find('all')
+        $objects = $this->Objects->find('all')
             ->where(['solved' => 0])
             ->contain(['Users', 'Categories', 'Comments', 'Uploads'])
             ->order(['Objects.id' => 'DESC'])
             ->limit(3);
 
-        $this->set('objects', $Objects);
+        $this->set('objects', $objects);
 
         $this->set(compact('page', 'subpage'));
 

@@ -18,6 +18,8 @@ class ObjectsController extends AppController
     private $userId;
     private $userRole;
 
+    public $helpers = ['TextLimit'];
+
     /**
      * beforeFilter callback method
      * This callback method allow views to see visualized without authentication
@@ -51,7 +53,7 @@ class ObjectsController extends AppController
      */
     public function index()
     {
-        
+
         if($this->userRole == 'admin'){
              $this->paginate = [
                 'contain' => ['Users']
@@ -122,10 +124,10 @@ class ObjectsController extends AppController
                 $this->Flash->success(__('O objeto foi salvo com sucesso.'));
 
                     return $this->redirect(['action' => 'index']);
-                
+
             }
             $this->Flash->error(__('O objeto não pode ser salvo. Por favor, tente novamente.'));
-            
+
         }
         $users = $this->Objects->Users->find('list', ['limit' => 200]);
         $categories = $this->Objects->Categories->find('list', ['limit' => 200]);
@@ -150,7 +152,7 @@ class ObjectsController extends AppController
             if ($this->Objects->save($object)) {
                 if(!empty($this->request->data('uploadfile')[0]['tmp_name'])){
                     $objectId = $object->id;
-                    
+
                     $uploadedFiles = $this->Objects->Uploads->uploadMultitpleObjectFiles($this->request->data('uploadfile'));
 
                     foreach ($uploadedFiles as $uploadedFile) {
@@ -203,26 +205,26 @@ class ObjectsController extends AppController
     {
         $this->viewBuilder()->setLayout('frontend');
 
-        $query = $this->Objects
+        $objects = $this->Objects
             ->find('search', ['search' => $this->request->query])
             ->order(['Objects.id' => 'DESC'])
             ->where(['solved' => 0])
             ->contain(['Users', 'Categories', 'Comments', 'Uploads']);
 
-        $this->set('objects', $this->paginate($query));
+        $this->set('objects', $this->paginate($objects));
     }
 
     public function listAllSolvedObjects()
     {
         $this->viewBuilder()->setLayout('frontend');
 
-        $query = $this->Objects
+        $objects = $this->Objects
             ->find('search', ['search' => $this->request->query])
             ->order(['Objects.id' => 'DESC'])
             ->where(['solved' => 1])
             ->contain(['Users', 'Categories', 'Comments', 'Uploads']);
 
-        $this->set('objects', $this->paginate($query));
+        $this->set('objects', $this->paginate($objects));
     }
 
     /**
@@ -237,7 +239,7 @@ class ObjectsController extends AppController
         $object = $this->Objects->get($id, [
             'contain' => ['Users', 'Categories', 'Comments', 'Uploads'],
         ]);
-    
+
         $this->set(compact('object', 'users', 'categories'));
         $this->set('_serialize', ['object']);
     }
@@ -249,7 +251,7 @@ class ObjectsController extends AppController
      */
     public function mapView()
     {
-        $this->viewBuilder()->setLayout('frontend');    
+        $this->viewBuilder()->setLayout('frontend');
     }
 
     /**
@@ -258,17 +260,17 @@ class ObjectsController extends AppController
      * @return json response
      */
     public function generateDataMaps()
-    {   
+    {
         $this->autoRender = false;
 
         $data = $this->Objects->find()
             ->select(['id', 'name', 'type', 'date', 'latitude', 'longitude'])
             ->order(['Objects.id' => 'DESC']);
 
-        $this->response->type('json');  
+        $this->response->type('json');
 
         $json = json_encode($data);
-        
+
         $this->response->body($json);
 
     }

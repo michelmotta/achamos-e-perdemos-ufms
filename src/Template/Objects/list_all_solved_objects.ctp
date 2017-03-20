@@ -13,31 +13,31 @@
 			</div>
 		</div>
 		<?php echo $this->Form->end();?>
-	</div>	
-	<div class="col-md-2"></div>	
+	</div>
+	<div class="col-md-2"></div>
 </div>
 <!-- Page Features -->
-<div class="row text-center"> 
-	<?php 
+<div class="row text-center">
+	<?php
 		$post_counter = 0;
 		$per_row = 3;
 
 		foreach ($objects as $object) {
 			if ( $post_counter % $per_row == 0 && $post_counter !== 0 )
-				echo '</div><div class="row text-center">';		
-	?>         
+				echo '</div><div class="row text-center">';
+	?>
 	<div class="col-md-4 hero-feature">
 		<div class="thumbnail" style="border: 3px solid #006400">
 			<div class="thumbnail-type" style="background: #006400">
 					<p><?= $object->type; ?></p>
 			</div>
-			<?php 
+			<?php
 			if (!empty($object->uploads)):
 				foreach ($object->uploads as $uploads):
 					echo $this->Html->image('uploads/'. $uploads->file, ['alt' => '']);
 					break;
 				endforeach;
-			endif; 
+			endif;
 			?>
 			<div class="caption">
 				<h3><?= $object->name; ?></h3>
@@ -48,7 +48,7 @@
 		</div>
 	</div>
 	<?php $post_counter++; } ?>
-</div>  
+</div>
 <!-- /.row -->
 <div class="paginator">
 	<ul class="pagination">
