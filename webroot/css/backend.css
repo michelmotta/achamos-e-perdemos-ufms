@@ -15723,3 +15723,9 @@ label {
 .main-header .logo{
     display: none;
 }
+.navbar-toggle {
+    background-color: #fff;
+}
+.navbar-toggle .icon-bar {
+    background: #673AB7;
+}
