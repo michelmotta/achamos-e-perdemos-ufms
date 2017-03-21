@@ -129,7 +129,7 @@
 				curl_close($curl);
 
 				$data = json_decode($response);
-				$table = "<table class='table'><thead><tr><th>Nome do Objeto</th><th>Tipo do Objeto</th><th>Data do ocorrido</th><th>Latitude</th><th>Longitude</th></tr><thead>";
+				$table = "<div class='table-responsive'><table class='table'><thead><tr><th>Nome do Objeto</th><th>Tipo do Objeto</th><th>Data do ocorrido</th><th>Latitude</th><th>Longitude</th></tr><thead>";
 				if (!empty($data)):
 					$count = 0;
 					foreach ($data as $object):
@@ -139,7 +139,7 @@
 							break;
 						}
 					endforeach;
-				$table .= "</table";
+				$table .= "</table></div>";
 				endif;
 			?>
 			<div class="php-table">
@@ -153,7 +153,7 @@
 		type:"GET",
 		url:"http://achamoseperdemos.com/datamaps",
 		success: function(data){
-			var table = "<table class='table'><thead><tr><th>Nome do Objeto</th><th>Tipo do Objeto</th><th>Latitude</th><th>Longitude</th></tr></thead>";
+			var table = "<div class='table-responsive'><table class='table'><thead><tr><th>Nome do Objeto</th><th>Tipo do Objeto</th><th>Latitude</th><th>Longitude</th></tr></thead>";
 			var count = 0;
 			$.each(data, function(index, ponto) {
 				count++;
@@ -162,7 +162,7 @@
 					return false;
 				}
 			});
-			table += "</table>";
+			table += "</table></div>";
 			$("#records_table").append(table);
 		},
 		error: function () {
