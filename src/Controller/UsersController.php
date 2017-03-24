@@ -25,9 +25,9 @@ class UsersController extends AppController
     }
 
     /**
-     * login method
-     * This permits users to login at this application
-     * @return \Cake\Network\Response|null
+     * login method This permits users to login at this application
+     *
+     * @return \Cake\Network\Response|null redirects on successful login, renders view otherwise.
      */
     public function login()
     {
@@ -44,9 +44,9 @@ class UsersController extends AppController
     }
 
     /**
-     * login method
-     * This permits users to logout at this application
-     * @return \Cake\Network\Response|null
+     * logout method This permits users to login at this application
+     *
+     * @return \Cake\Network\Response|null redirects on successful logout, renders view otherwise.
      */
     public function logout()
     {
@@ -54,8 +54,8 @@ class UsersController extends AppController
     }
 
     /**
-     * Index method
-     * This method set data from users to the view
+     * Index method This method set data from users to the view
+     *
      * @return \Cake\Network\Response|null
      */
     public function index()
@@ -78,13 +78,11 @@ class UsersController extends AppController
 
             $this->set('users', $this->paginate($query));
         }
-
-        
     }
 
     /**
-     * View method
-     * 
+     * View method search user by id and set data to view
+     *
      * @param string|null $id User id.
      * @return \Cake\Network\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -100,7 +98,7 @@ class UsersController extends AppController
     }
 
     /**
-     * Add method
+     * Add method save a new user entity to database
      * This method saves one user entity data from add view
      * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
      */
@@ -116,7 +114,7 @@ class UsersController extends AppController
 
                 $url = Router::url('/', true);
                 $dir = $url . 'webroot' . DS . 'img' . DS . 'users' . DS . $file;
-                
+
                 $user->photo = $file;
                 $user->photo_path = $dir;
             }
@@ -133,8 +131,8 @@ class UsersController extends AppController
     }
 
     /**
-     * Add method
-     * This method saves one user entity data from register view
+     * Add method This method saves one user entity data from register view
+     *
      * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
      */
     public function register()
@@ -144,7 +142,7 @@ class UsersController extends AppController
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
-            
+
             $arr = $this->request->data('photo');
             if(!empty($arr['tmp_name'])){
                 $this->loadModel('Uploads');
@@ -152,7 +150,7 @@ class UsersController extends AppController
 
                 $url = Router::url('/', true);
                 $dir = $url . 'webroot' . DS . 'img' . DS . 'users' . DS . $file;
-                
+
                 $user->photo = $file;
                 $user->photo_path = $dir;
             }
@@ -169,7 +167,7 @@ class UsersController extends AppController
     }
 
     /**
-     * Edit method
+     * Edit method edit an existing entity in database
      *
      * @param string|null $id User id.
      * @return \Cake\Network\Response|null Redirects on successful edit, renders view otherwise.
@@ -183,7 +181,7 @@ class UsersController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
 
             $arr = $this->request->data('photo');
-            
+
             if($arr['tmp_name'] == ''){
                  unset($this->request->data['photo']);
             }
@@ -196,11 +194,11 @@ class UsersController extends AppController
 
                 $url = Router::url('/', true);
                 $dir = $url . 'webroot' . DS . 'img' . DS . 'users' . DS . $file;
-                
+
                 $user->photo = $file;
                 $user->photo_path = $dir;
             }
-            
+
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('O usuário foi salvo com sucesso.'));
 
@@ -214,7 +212,7 @@ class UsersController extends AppController
     }
 
     /**
-     * Delete method
+     * Delete method delete an existing entity in database
      *
      * @param string|null $id User id.
      * @return \Cake\Network\Response|null Redirects to index.
@@ -234,10 +232,10 @@ class UsersController extends AppController
     }
 
     /**
-     * viewProfile method
+     * viewProfile method This method set data from single user to the view
      * @param string|null $id User id.
-     * This method set data from single user to the view
      * @return \Cake\Network\Response|null
+     * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function viewProfile($id = null)
     {

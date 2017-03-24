@@ -29,12 +29,19 @@ use Cake\Event\Event;
  */
 class PagesController extends AppController
 {
+
+   /**
+    * beforeFilter callback method This callback method allow views to see visualized without authentication
+    *
+    * @return \Cake\Network\Response|null
+    */
    public function beforeFilter(Event $event)
    {
       $this->Auth->allow(['display', 'home', 'restApi']);
    }
+
     /**
-     * Displays a view
+     * Displays a view home page
      *
      * @param string ...$path Path segments.
      * @return void|\Cake\Network\Response
@@ -81,6 +88,14 @@ class PagesController extends AppController
         }
     }
 
+    /**
+    * Displays a view dashboard admin page
+    *
+    * @return void|\Cake\Network\Response
+    * @throws \Cake\Network\Exception\ForbiddenException When a directory traversal attempt.
+    * @throws \Cake\Network\Exception\NotFoundException When the view file could not
+    *   be found or \Cake\View\Exception\MissingTemplateException in debug mode.
+    */
    public function dashboard()
    {
         $this->loadModel('Objects');
@@ -92,6 +107,14 @@ class PagesController extends AppController
         $this->set('allCountComments', $allCountComments);
    }
 
+   /**
+   * Displays a view restApi page with frontend layout
+   *
+   * @return void|\Cake\Network\Response
+   * @throws \Cake\Network\Exception\ForbiddenException When a directory traversal attempt.
+   * @throws \Cake\Network\Exception\NotFoundException When the view file could not
+   *   be found or \Cake\View\Exception\MissingTemplateException in debug mode.
+   */
    public function restApi()
    {
         $this->viewBuilder()->setLayout('frontend');

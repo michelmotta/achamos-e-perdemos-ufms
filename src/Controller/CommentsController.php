@@ -14,6 +14,11 @@ class CommentsController extends AppController
     private $userId;
     private $userRole;
 
+    /**
+     * initialization method of this class
+     *
+     * @return \Cake\Network\Response|null
+     */
     public function initialize()
     {
         parent::initialize();
@@ -21,8 +26,9 @@ class CommentsController extends AppController
         $this->userId = $this->Auth->user('id');
         $this->userRole = $this->Auth->user('role');
     }
+
     /**
-     * Index method
+     * Index method set array of comments to index view
      *
      * @return \Cake\Network\Response|null
      */
@@ -49,7 +55,7 @@ class CommentsController extends AppController
     }
 
     /**
-     * View method
+     * View method search category by id and set data to view
      *
      * @param string|null $id Comment id.
      * @return \Cake\Network\Response|null
@@ -61,21 +67,21 @@ class CommentsController extends AppController
             'contain' => ['Objects']
         ]);
 
-        $comment->status = 1; 
+        $comment->status = 1;
 
         if($this->Comments->save($comment)){
             $comment = $this->Comments->get($id, [
                 'contain' => ['Objects']
             ]);
         }
-        
+
         $this->set('comment', $comment);
         $this->set('_serialize', ['comment']);
     }
 
-    
+
     /**
-     * addComment
+     * addComment save a new comment entity to database from frontend form
      *
      * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
      */
@@ -94,7 +100,7 @@ class CommentsController extends AppController
     }
 
     /**
-     * Add method
+     * Add method save a new comment entity to database
      *
      * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
      */
@@ -116,7 +122,7 @@ class CommentsController extends AppController
     }
 
     /**
-     * Edit method
+     * Edit method edit an existing entity in database
      *
      * @param string|null $id Comment id.
      * @return \Cake\Network\Response|null Redirects on successful edit, renders view otherwise.
@@ -142,7 +148,7 @@ class CommentsController extends AppController
     }
 
     /**
-     * Delete method
+     * Delete method delete an existing entity in database
      *
      * @param string|null $id Comment id.
      * @return \Cake\Network\Response|null Redirects to index.

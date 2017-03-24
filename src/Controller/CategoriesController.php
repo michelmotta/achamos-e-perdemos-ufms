@@ -12,7 +12,7 @@ class CategoriesController extends AppController
 {
 
     /**
-     * Index method
+     * Index method set array of categories to index view
      *
      * @return \Cake\Network\Response|null
      */
@@ -25,7 +25,7 @@ class CategoriesController extends AppController
     }
 
     /**
-     * View method
+     * View method search category by id and set data to view
      *
      * @param string|null $id Category id.
      * @return \Cake\Network\Response|null
@@ -42,7 +42,7 @@ class CategoriesController extends AppController
     }
 
     /**
-     * Add method
+     * Add method save a new category entity to database
      *
      * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
      */
@@ -64,7 +64,7 @@ class CategoriesController extends AppController
     }
 
     /**
-     * Edit method
+     * Edit method edit an existing entity in database
      *
      * @param string|null $id Category id.
      * @return \Cake\Network\Response|null Redirects on successful edit, renders view otherwise.
@@ -90,7 +90,7 @@ class CategoriesController extends AppController
     }
 
     /**
-     * Delete method
+     * Delete method delete an existing entity in database
      *
      * @param string|null $id Category id.
      * @return \Cake\Network\Response|null Redirects to index.

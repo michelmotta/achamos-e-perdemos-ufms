@@ -14,22 +14,27 @@ class UploadsController extends AppController
     private $userId;
     private $userRole;
 
+    /**
+     * initialization method of this class
+     *
+     * @return \Cake\Network\Response|null
+     */
     public function initialize()
     {
         parent::initialize();
-        
+
         $this->userId = $this->Auth->user('id');
         $this->userRole = $this->Auth->user('role');
     }
 
     /**
-     * Index method
+     * Index method set array of uploads to index view
      *
      * @return \Cake\Network\Response|null
      */
     public function index()
     {
-        
+
         if($this->userRole == 'admin'){
             $this->paginate = [
                 'contain' => ['Objects', 'Users']
@@ -49,7 +54,7 @@ class UploadsController extends AppController
     }
 
     /**
-     * View method
+     * View method search upload by id and set data to view
      *
      * @param string|null $id Upload id.
      * @return \Cake\Network\Response|null
@@ -66,7 +71,7 @@ class UploadsController extends AppController
     }
 
     /**
-     * Add method
+     * Add method save a new comment entity to database
      *
      * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
      */
@@ -89,7 +94,7 @@ class UploadsController extends AppController
     }
 
     /**
-     * Edit method
+     * Edit method edit an existing entity in database
      *
      * @param string|null $id Upload id.
      * @return \Cake\Network\Response|null Redirects on successful edit, renders view otherwise.
@@ -116,7 +121,7 @@ class UploadsController extends AppController
     }
 
     /**
-     * Delete method
+     * Delete method delete an existing entity in database
      *
      * @param string|null $id Upload id.
      * @return \Cake\Network\Response|null Redirects to index.
@@ -135,6 +140,13 @@ class UploadsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+    /**
+     * Delete method delete an existing entity in database
+     *
+     * @param string|null $id Upload id.
+     * @return \Cake\Network\Response|null Redirects to index.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
     public function deleteUpload($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);

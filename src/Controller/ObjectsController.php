@@ -21,19 +21,21 @@ class ObjectsController extends AppController
     public $helpers = ['TextLimit'];
 
     /**
-     * beforeFilter callback method
-     * This callback method allow views to see visualized without authentication
+     * beforeFilter callback method This callback method allow views to see visualized without authentication
+     *
      * @return \Cake\Network\Response|null
      */
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-        // Allow users to register and logout.
-        // You should not add the "login" action to allow list. Doing so would
-        // cause problems with normal functioning of AuthComponent.
         $this->Auth->allow(['listAllSolvedObjects', 'listAllUnsolvedObjects', 'singleItem', 'generateDataMaps', 'mapView']);
     }
 
+    /**
+     * initialization method of this class
+     *
+     * @return \Cake\Network\Response|null
+     */
     public function initialize()
     {
         parent::initialize();
@@ -47,7 +49,7 @@ class ObjectsController extends AppController
     }
 
     /**
-     * Index method
+     * Index method set array of objects to index view
      *
      * @return \Cake\Network\Response|null
      */
@@ -73,7 +75,7 @@ class ObjectsController extends AppController
     }
 
     /**
-     * View method
+     * View method search object by id and set data to view
      *
      * @param string|null $id Object id.
      * @return \Cake\Network\Response|null
@@ -90,7 +92,7 @@ class ObjectsController extends AppController
     }
 
     /**
-     * Add method
+     * Add method save a new comment entity to database from frontend form
      *
      * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
      */
@@ -136,7 +138,7 @@ class ObjectsController extends AppController
     }
 
     /**
-     * Edit method
+     * Edit method edit an existing entity in database
      *
      * @param string|null $id Object id.
      * @return \Cake\Network\Response|null Redirects on successful edit, renders view otherwise.
@@ -182,7 +184,7 @@ class ObjectsController extends AppController
     }
 
     /**
-     * Delete method
+     * Delete method delete an existing entity in database
      *
      * @param string|null $id Object id.
      * @return \Cake\Network\Response|null Redirects to index.
@@ -201,6 +203,11 @@ class ObjectsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+    /**
+     * listAllUnsolvedObjects set array of objects which flag solved = 0
+     *
+     * @return \Cake\Network\Response|null.
+     */
     public function listAllUnsolvedObjects()
     {
         $this->viewBuilder()->setLayout('frontend');
@@ -214,6 +221,11 @@ class ObjectsController extends AppController
         $this->set('objects', $this->paginate($objects));
     }
 
+    /**
+     * listAllSolvedObjects set array of objects which flag solved = 1
+     *
+     * @return \Cake\Network\Response|null.
+     */
     public function listAllSolvedObjects()
     {
         $this->viewBuilder()->setLayout('frontend');
@@ -228,9 +240,9 @@ class ObjectsController extends AppController
     }
 
     /**
-     * singleItem method
-     * This method searchs for data about one single object in the database and set data to the view
-     * @return none
+     * singleItem method This method searchs for data about one single object in the database and set data to the view
+     *
+     * @return \Cake\Network\Response|null.
      */
     public function singleItem($id = null)
     {
@@ -245,9 +257,9 @@ class ObjectsController extends AppController
     }
 
     /**
-     * mapView method
-     * This method set ajax layout, it makes find in Objects database, and set data to view
-     * @return none
+     * mapView method This method set frontend layout to view
+     *
+     * @return \Cake\Network\Response|null.
      */
     public function mapView()
     {
@@ -255,9 +267,9 @@ class ObjectsController extends AppController
     }
 
     /**
-     * generateDataMaps method
-     * This method set ajax layout, it makes find in Objects database, and set data to view
-     * @return json response
+     * generateDataMaps method This method set ajax layout, it makes find in Objects database, and set data to view
+     *
+     * @return \Cake\Network\Response|null.
      */
     public function generateDataMaps()
     {
