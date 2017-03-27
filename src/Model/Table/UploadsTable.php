@@ -103,7 +103,6 @@ class UploadsTable extends Table
             $allowed = array('png','jpg', 'jpeg', 'bmp');
 
             if (!in_array(substr(strrchr($filename, '.'), 1), $allowed)) {
-                $this->Flash->error(__("O tipo de arquivo não é permitido."));
                 return $this->redirect(['action' => 'index']);
             }elseif (is_uploaded_file($file_tmp_name)) {
                 $extension = substr(strrchr($filename, '.'), 1);
@@ -131,7 +130,6 @@ class UploadsTable extends Table
 				$allowed = array('png','jpg', 'jpeg', 'bmp');
 
 				if (!in_array(substr(strrchr($filename, '.'), 1), $allowed)) {
-					$this->Flash->error(__("O tipo de arquivo não é permitido."));
                 return $this->redirect(['action' => 'index']);
 				}elseif (is_uploaded_file($file_tmp_name)) {
                     $extension = substr(strrchr($filename, '.'), 1);
