@@ -56,7 +56,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/register', ['controller' => 'Users', 'action' => 'register']);
     $routes->connect('/list-objects', ['controller' => 'Objects', 'action' => 'listAllUnsolvedObjects']);
     $routes->connect('/list-solved-objects', ['controller' => 'Objects', 'action' => 'listAllSolvedObjects']);
-    $routes->connect('/datamaps', ['controller' => 'Objects', 'action' => 'generateDataMaps']);
+    $routes->connect('/datamaps/*', ['controller' => 'Objects', 'action' => 'generateDataMaps']);
     $routes->connect('/login', ['controller' => 'Users', 'action' => 'login']);
     $routes->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
 

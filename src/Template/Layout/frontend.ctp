@@ -38,7 +38,7 @@ $cakeDescription = 'Achamos e Perdemos UFMS';
     script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
     script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
     -->
-  
+
     <?= $this->Html->script('jquery-2.1.4.min') ?>
 
     <!-- Latest compiled and minified CSS -->

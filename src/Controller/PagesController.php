@@ -133,12 +133,13 @@ class PagesController extends AppController
 
           $this->set('allCountComments', $allCountComments);
       }else{
-          $query = $this->Objects
+          $allCountObjects = $this->Objects
              ->find()
              ->contain(['Users'])
-             ->where(['user_id' => $this->userId]);
+             ->where(['user_id' => $this->userId])
+             ->count();
 
-          $this->set('objects', $this->paginate($query));
+          $this->set('allCountObjects', $allCountObjects);
 
           $allCountComments = $this->Comments
           ->find()

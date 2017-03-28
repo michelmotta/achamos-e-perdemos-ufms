@@ -271,19 +271,30 @@ class ObjectsController extends AppController
      *
      * @return \Cake\Network\Response|null.
      */
-    public function generateDataMaps()
+    public function generateDataMaps($id = null)
     {
         $this->autoRender = false;
+        if($id == null){
+           $data = $this->Objects->find()
+               ->select(['id', 'name', 'type', 'date', 'latitude', 'longitude'])
+               ->order(['Objects.id' => 'DESC']);
 
-        $data = $this->Objects->find()
-            ->select(['id', 'name', 'type', 'date', 'latitude', 'longitude'])
-            ->order(['Objects.id' => 'DESC']);
+           $this->response->type('json');
 
-        $this->response->type('json');
+           $json = json_encode($data);
 
-        $json = json_encode($data);
+           $this->response->body($json);
+        }else{
+           $data = $this->Objects->find()
+               ->select(['id', 'name', 'type', 'date', 'latitude', 'longitude'])
+               ->where(['Objects.id' => $id]);
 
-        $this->response->body($json);
+           $this->response->type('json');
+
+           $json = json_encode($data);
+
+           $this->response->body($json);
+        }
 
     }
 }

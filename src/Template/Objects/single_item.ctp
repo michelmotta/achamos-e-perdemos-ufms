@@ -1,4 +1,4 @@
-<div class="jumbotron">			
+<div class="jumbotron">
 	<div class="row">
 		<div class="col-md-6">
 
@@ -11,11 +11,11 @@
 						foreach ($object->uploads as $uploads):
 							if($count == 1)
 								$active = 'active';
-							else	
+							else
 								$active = '';
 							echo '<div class="item '. $active . '">';
 								echo $this->Html->image('uploads/'. $uploads->file, ['alt' => '']);
-							echo '</div>';	
+							echo '</div>';
 							$count++;
 						endforeach;
 					?>
@@ -35,7 +35,7 @@
 
 		</div>
 		<div class="col-md-6">
-			<?php 
+			<?php
 				if($object->type == 'achado')
 					$class = "achado";
 				else
@@ -49,7 +49,7 @@
 			</div>
 			<div class="item-descri">
 				<?= $object->description; ?>
-			</div>	
+			</div>
 		</div>
 	</div>
 	<div class="row">
@@ -80,14 +80,14 @@
 										<div class="comentario-text">
 											<?= $comments->comment; ?>
 										</div>
-									</div>	
-								</div>	
+									</div>
+								</div>
 							</div>
 						<?php endforeach; ?>
 				<?php endif; ?>
-			</div>	
+			</div>
 		</div>
-	</div>			
+	</div>
 </div>
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -113,6 +113,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<?php echo $this->Form->control('object_id', ['type' => 'hidden', 'value' => $object->id]); ?>
+							<?php echo $this->Form->control('status', ['type' => 'hidden', 'value' => 0]); ?>
 						</div>
 					</div>
 					<div class="row">
@@ -122,7 +123,7 @@
 					</div>
 				<center><?= $this->Form->button(__('<i class="fa fa-fw fa-lg fa-check-circle"></i> Comentar'), ['class' => 'btn btn-primary icon-btn', 'escape' => false]) ?></center>
 				<?= $this->Form->end() ?>
-			</div>	
+			</div>
       </div>
       <div class="modal-footer">
         	<button type="button" class="btn btn-default" data-dismiss="modal">Fechar Formulário</button>
@@ -130,10 +131,10 @@
     </div>
   </div>
 </div>
-<script type="text/javascript"> 
+<script type="text/javascript">
     var map;
     var marker;
-    var myLatlng = new google.maps.LatLng(<?= $object->latitude; ?>,<?= $object->longitude; ?>); 
+    var myLatlng = new google.maps.LatLng(<?= $object->latitude; ?>,<?= $object->longitude; ?>);
     var geocoder = new google.maps.Geocoder();
     var infowindow = new google.maps.InfoWindow();
     function initialize(){
@@ -142,15 +143,15 @@
 			center: myLatlng,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
-		
+
 		map = new google.maps.Map(document.getElementById("myMap"), mapOptions);
-		
+
 		marker = new google.maps.Marker({
 			map: map,
 			position: myLatlng,
 			draggable: false
-		});     
-		
+		});
+
 		geocoder.geocode({'latLng': myLatlng }, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
 					if (results[0]) {
@@ -159,7 +160,7 @@
 					}
 			}
 		});
-    
+
     }
     google.maps.event.addDomListener(window, 'load', initialize);
-</script> 
+</script>
