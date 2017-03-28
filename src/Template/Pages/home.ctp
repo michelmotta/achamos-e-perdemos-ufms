@@ -21,7 +21,7 @@ use Cake\Network\Exception\NotFoundException;
 
 $this->layout = false;
 
-$cakeDescription = 'CakePHP: the rapid development PHP framework';
+$cakeDescription = 'Achamos e Perdemos UFMS';
 ?>
 <!DOCTYPE html>
 <html>

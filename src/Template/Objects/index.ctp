@@ -13,7 +13,6 @@
                    <thead>
                        <tr>
                            <th scope="col"><?= $this->Paginator->sort('id', __('Id')) ?></th>
-                           <th scope="col"><?= $this->Paginator->sort('user_id', __('Nome do Usuário')) ?></th>
                            <th scope="col"><?= $this->Paginator->sort('name', __('Nome do Objeto')) ?></th>
                            <th scope="col"><?= $this->Paginator->sort('type', __('Tipo do Objeto')) ?></th>
                            <th scope="col"><?= $this->Paginator->sort('date', __('Data do Ocorrido')) ?></th>
@@ -32,7 +31,6 @@
                        ?>
                        <tr>
                            <td><?= $this->Number->format($object->id) ?></td>
-                           <td><?= $object->has('user') ? $this->Html->link($object->user->name, ['controller' => 'Users', 'action' => 'view', $object->user->id]) : '' ?></td>
                            <td><?= h($object->name) ?></td>
                            <td><?= $label ?></td>
                            <td><?= h($object->date) ?></td>
@@ -47,7 +45,7 @@
                        <?php endforeach; ?>
                    </tbody>
                </table>
-            </div>   
+            </div>
             <div class="paginator">
                 <ul class="pagination">
                     <?= $this->Paginator->first('<< ' . __('primeiro')) ?>

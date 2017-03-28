@@ -30,6 +30,22 @@ use Cake\Event\Event;
 class PagesController extends AppController
 {
 
+   private $userId;
+   private $userRole;
+
+   /**
+    * initialization method of this class
+    *
+    * @return \Cake\Network\Response|null
+    */
+   public function initialize()
+   {
+      parent::initialize();
+
+      $this->userId = $this->Auth->user('id');
+      $this->userRole = $this->Auth->user('role');
+   }
+
    /**
     * beforeFilter callback method This callback method allow views to see visualized without authentication
     *
@@ -98,13 +114,44 @@ class PagesController extends AppController
     */
    public function dashboard()
    {
-        $this->loadModel('Objects');
-        $allCountObjects = $this->Objects->find('all')->count();
-        $this->set('allCountObjects', $allCountObjects);
 
-        $this->loadModel('Comments');
-        $allCountComments = $this->Comments->find('all')->count();
-        $this->set('allCountComments', $allCountComments);
+      $this->loadModel('Objects');
+      $this->loadModel('Comments');
+      if($this->userRole == 'admin'){
+
+         $allCountObjects = $this->Objects
+         ->find()
+         ->contain(['Users'])
+         ->count();
+
+         $this->set('allCountObjects', $allCountObjects);
+
+         $allCountComments = $this->Comments
+         ->find()
+         ->contain(['Objects'])
+         ->count();
+
+          $this->set('allCountComments', $allCountComments);
+      }else{
+          $query = $this->Objects
+             ->find()
+             ->contain(['Users'])
+             ->where(['user_id' => $this->userId]);
+
+          $this->set('objects', $this->paginate($query));
+
+          $allCountComments = $this->Comments
+          ->find()
+          ->contain(['Objects'])
+          ->where(['user_id' => $this->userId])
+          ->count();
+
+           $this->set('allCountComments', $allCountComments);
+      }
+
+      //$this->loadModel('Comments');
+      //$allCountComments = $this->Comments->find('all')->count();
+      //$this->set('allCountComments', $allCountComments);
    }
 
    /**
