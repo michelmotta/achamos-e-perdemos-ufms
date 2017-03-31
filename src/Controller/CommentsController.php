@@ -23,6 +23,8 @@ class CommentsController extends AppController
     {
         parent::initialize();
 
+         $this->Auth->allow(['addComment']);
+
         $this->userId = $this->Auth->user('id');
         $this->userRole = $this->Auth->user('role');
     }
